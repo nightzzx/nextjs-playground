@@ -47,6 +47,16 @@ export default function AboutPage() {
         Give me a toast
       </Button>
 
+      <Button
+        onClick={() =>
+          toast.error("Dear xx", {
+            description: "Payment Fail",
+          })
+        }
+      >
+        Give me a fail toast
+      </Button>
+
       <form>
         <RadioGroup.Root
           className="flex flex-col gap-2.5"
