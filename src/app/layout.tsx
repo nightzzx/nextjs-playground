@@ -7,6 +7,10 @@ import { Toaster } from "@/components/ui/toaster";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import Provider from "@/components/Provider";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,16 +23,19 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
       <body>
-        {" "}
-        <ThemeProvider attribute="class" defaultTheme="light">
-          {/* <NavMenu /> */}
-          {children}
+        <Provider>
+          <ThemeProvider attribute="class" defaultTheme="light">
+          {session?.user.id && <h2>the {session.user.name} logged in already!</h2> >}
+            {children}
 
-          <Toaster />
-        </ThemeProvider>
+            <Toaster />
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );
