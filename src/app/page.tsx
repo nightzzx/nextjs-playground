@@ -1,29 +1,34 @@
 "use client";
 
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session, status } = useSession();
+
   // console.log(status, "status is ss from client");
 
-  // if (session) {
-  //   console.log(session.user, "user session is");
+  if (session) {
+    console.log(session, "session is");
 
-  //   return (
-  //     <>
-  //       {session.user?.name} <br />
-  //       <button onClick={() => signOut()}>sign outs</button>
-  //     </>
-  //   );
-  // }
+    return (
+      <>
+        {session.user?.name} <br />
+        <Button onClick={() => signOut()}>Sign out</Button>
+      </>
+    );
+  }
 
   return (
     <>
       Not signed in <br />
-      {/* <button onClick={() => signIn("google")}>sign in with google</button>
+      <Button onClick={() => signIn("google")}>Sign in with Google</Button>
       <br></br>
-      <button onClick={() => signIn("facebook")}>sign in with fb</button>
+      <Button onClick={() => signIn("facebook")}>Sign in with Facebook</Button>
       <br></br>
-      <button onClick={() => signIn("apple")}>sign in with apple id</button> */}
+      <Button onClick={() => signIn("github")}>Sign in with Github</Button>
+      <br></br>
     </>
   );
 }
