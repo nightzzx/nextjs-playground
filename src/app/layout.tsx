@@ -31,7 +31,7 @@ export default async function RootLayout({
         <Provider>
           <ThemeProvider attribute="class" defaultTheme="light">
             {session?.user.id && (
-              <h2>the {session.user.name} logged in already!</h2>
+              <h2>the {session.user.name} logged in already!!</h2>
             )}
             {children}
 
