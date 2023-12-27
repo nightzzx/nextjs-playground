@@ -29,6 +29,8 @@ export default function Home() {
       <br></br>
       <Button onClick={() => signIn("github")}>Sign in with Github</Button>
       <br></br>
+      <Button onClick={() => signIn("apple")}>Sign in with Apple</Button>
+      <br></br>
     </>
   );
 }

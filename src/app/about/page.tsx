@@ -20,6 +20,7 @@ export default function AboutPage() {
         selected={date}
         onSelect={setDate}
         className="rounded-md border shadow"
+        classNames={undefined}
       />
 
       <ModeToggle />

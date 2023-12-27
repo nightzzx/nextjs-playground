@@ -61,6 +61,16 @@ export const authOptions = {
         };
       }
 
+      if (account && account.provider === "facebook") {
+        return {
+          ...token,
+        };
+      }
+      if (account && account.provider === "apple") {
+        return {
+          ...token,
+        };
+      }
       // pass in all to token
       if (user) {
         return {
