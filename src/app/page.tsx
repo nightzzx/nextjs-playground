@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Testplayground from "./testplayground";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -31,6 +32,7 @@ export default function Home() {
       <br></br>
       <Button onClick={() => signIn("apple")}>Sign in with Apple</Button>
       <br></br>
+      <Testplayground />
     </>
   );
 }
